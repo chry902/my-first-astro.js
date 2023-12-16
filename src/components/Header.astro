@@ -1,0 +1,21 @@
+---
+import Menu from "./Menu/Menu.jsx";
+const { pathname } = Astro.url;
+---
+
+<header>
+  <h1>My first Astro.js website</h1>
+  <Menu client:load path={pathname} />
+</header>
+<style>
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    h1 {
+      text-wrap: nowrap;
+    }
+  }
+</style>

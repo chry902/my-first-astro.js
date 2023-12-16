@@ -1,0 +1,11 @@
+.selected {
+    color: red;
+}
+
+.menu_wrapper,
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 1rem;
+}

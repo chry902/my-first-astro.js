@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const data = await fetch("https://fakestoreapi.com/products");
+const products = await data.json();
+---
+
+<Layout title="Products">
+  <main>
+    <h3>All products</h3>
+    <section>
+      {
+        products.map(
+          (product: {
+            title: string;
+            image: string;
+            price: number;
+            id: number;
+          }) => {
+            return (
+              <article class="card">
+                <h4>{product.title}</h4>
+                <div class="image_container">
+                  <img src={product.image} alt={product.title} />
+                </div>
+                <h4>{product.price}€</h4>
+
+                <a href={`/products/${product.id}`}>Read more</a>
+              </article>
+            );
+          }
+        )
+      }
+    </section>
+  </main>
+</Layout>
+<style>
+  .card {
+    width: 250px;
+    height: 300px;
+  }
+  .image_container {
+    width: 80px;
+    height: 150px;
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+</style>
