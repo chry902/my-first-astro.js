@@ -3,6 +3,7 @@ interface Props {
   title: string;
 }
 import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
 const { title } = Astro.props;
 ---
 
@@ -15,25 +16,26 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <Header />
     <slot />
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+      }
+      html {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      ul {
+        list-style: none;
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  a {
-    text-decoration: none;
-  }
-  html {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  ul {
-    list-style: none;
-  }
-</style>

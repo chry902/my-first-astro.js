@@ -1,5 +1,7 @@
 ---
+import { fade } from "astro:transitions";
 import Layout from "../../layouts/Layout.astro";
+
 //SSR - renderizza una pagina a ogni richiesta ed imposto il pre rendering della pagina a false perche ho impostato output ad hybrid sulle impost. di astro
 export const prerender = false;
 const { id } = Astro.params;
@@ -8,16 +10,29 @@ const product = await res.json();
 ---
 
 <Layout title="product dettails">
+  <h3 transition:animate="slide">Full product</h3>
   <div class="card">
     <h4>{product.title}</h4>
+    <p transition:animate={fade({ duration: "5s" })}>
+      {product.description}
+    </p>
     <div class="image_container">
       <img src={product.image} alt={product.title} />
     </div>
     <h4>{product.price}€</h4>
-    <p>
-      {product.description}
-
-      <a href={`/product/${product.id}`}>Read more</a>
-    </p>
   </div>
 </Layout>
+<style>
+  .image_container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+  }
+  img {
+    width: 40%;
+    height: auto;
+    object-fit: contain;
+    background: none;
+  }
+</style>
