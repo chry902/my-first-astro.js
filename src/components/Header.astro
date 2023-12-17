@@ -4,7 +4,7 @@ const { pathname } = Astro.url;
 ---
 
 <header>
-  <h1>My first Astro.js website</h1>
+  <h1>My first Astro.js web App</h1>
   <Menu client:load path={pathname} />
 </header>
 <style>
@@ -14,6 +14,7 @@ const { pathname } = Astro.url;
     justify-content: space-between;
     gap: 1rem;
     align-items: center;
+    margin: 1rem 0;
     h1 {
       text-wrap: nowrap;
     }
